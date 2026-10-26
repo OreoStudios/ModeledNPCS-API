@@ -9,12 +9,12 @@
     <!-- ========================================== -->
     <groupId>fr.elias</groupId>
     <artifactId>ModeledNPCs-API</artifactId>
-    <version>7.7b</version>
+    <version>8.0</version>
     <packaging>jar</packaging>
 
     <name>ModeledNPCs API</name>
     <description>Public API for ModeledNPCs plugin</description>
-    <url>https://github.com/EliasNPC/ModeledNPCs</url>
+    <url>https://github.com/OreoStudios/ModeledNPCS-API</url>
 
     <!-- ========================================== -->
     <!-- PROPERTIES                                 -->
@@ -116,7 +116,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/EliasNPC/ModeledNPCs</url>
+            <url>https://maven.pkg.github.com/OreoStudios/ModeledNPCS-API</url>
         </repository>
     </distributionManagement>
 </project>
