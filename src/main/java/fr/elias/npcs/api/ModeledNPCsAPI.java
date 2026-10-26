@@ -16,7 +16,10 @@ import java.util.UUID;
  * Complete API for NPC management, AI, pathfinding, escorts,
  * ModelEngine/MythicMobs integration, traders, quests, and dialogs.
  *
- * @version 7.8
+ * Call operations on the Bukkit server thread. Optional integrations must be installed.
+ * API 8.1 additions require a plugin build that bundles API 8.1.
+ *
+ * @version 8.1
  * @author Elias
  */
 public abstract class ModeledNPCsAPI {
@@ -599,4 +602,38 @@ public abstract class ModeledNPCsAPI {
      * @return interval in ticks, defaults to 20
      */
     public abstract int getNPCHologramFrameInterval(int npcId);
+
+    // Extended API (8.1). Public types do not depend on implementation packages.
+
+    /** Gets or creates the default route. Mutations on the handle are persisted. */
+    public abstract fr.elias.npcs.data.INPCRoute getOrCreateRoute(int npcId);
+    /** Gets or creates a named route. */
+    public abstract fr.elias.npcs.data.INPCRoute getOrCreateRoute(int npcId, String routeId);
+    /** Returns the named route, or null if it does not exist. */
+    public abstract fr.elias.npcs.data.INPCRoute getRoute(int npcId, String routeId);
+    /** Sets the default route's traversal mode and saves it. */
+    public abstract void setRouteMode(int npcId, fr.elias.npcs.data.RouteMode mode);
+    /** Sets a finite positive default-route speed in blocks per tick and saves it. */
+    public abstract void setRouteSpeed(int npcId, double speed);
+    /** Starts an escort with route, arrival and walking-dialog options. */
+    public abstract void startEscort(int npcId, Player player, fr.elias.npcs.data.EscortOptions options);
+    /** Applies a ModelEngine blueprint to an entity. Requires ModelEngine. */
+    public abstract void applyModelEngineModel(org.bukkit.entity.LivingEntity entity, String blueprint, int npcId);
+    /** Respawns an existing ModelEngine NPC; ignores missing or other-type NPCs. */
+    public abstract void respawnModelEngineNPC(int id);
+    /** Spawns a MythicMobs NPC. Caller must supply an unused ID and UUID. */
+    public abstract void spawnMythicMobsNPC(int id, String mobName, Location location,
+            List<String> commands, String permission, UUID internalUUID);
+    /** Spawns a MythicMobs NPC with display and auto-look settings. */
+    public abstract void spawnMythicMobsNPCFull(int id, String mobName, Location location,
+            List<String> commands, String permission, UUID internalUUID, String customName,
+            String displayName, double hologramHeight, boolean autoLook);
+    /** Reapplies a MythicMobs NPC's current names using its registered data. */
+    public abstract void updateMythicMobName(int id);
+    /** Respawns an existing MythicMobs NPC; ignores missing or other-type NPCs. */
+    public abstract void respawnMythicMobNPC(int id);
+    /** Returns trader operations, or null while the trader service is unavailable. */
+    public abstract TraderAPI getTraderManager();
+    /** Gets quest status; returns null if no integration recognises the quest. */
+    public abstract fr.elias.npcs.data.QuestStatus getQuestStatus(Player player, String questName);
 }

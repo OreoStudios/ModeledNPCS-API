@@ -9,7 +9,7 @@
     <!-- ========================================== -->
     <groupId>fr.elias</groupId>
     <artifactId>ModeledNPCs-API</artifactId>
-    <version>8.0</version>
+    <version>8.1</version>
     <packaging>jar</packaging>
 
     <name>ModeledNPCs API</name>
