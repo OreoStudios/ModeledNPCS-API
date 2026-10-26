@@ -110,13 +110,13 @@
     </build>
 
     <!-- ========================================== -->
-    <!-- DISTRIBUTION (GitHub Packages)             -->
+    <!-- DISTRIBUTION (OreoStudios Maven)             -->
     <!-- ========================================== -->
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/OreoStudios/ModeledNPCS-API</url>
+            <id>oreostudios-releases</id>
+            <name>OreoStudios Maven Releases</name>
+            <url>https://maven.oreostudios.fr/releases</url>
         </repository>
     </distributionManagement>
 </project>

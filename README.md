@@ -2,7 +2,26 @@
 
 Public API for ModeledNPCS. Use a plugin build bundling API 8.1 (the updated 9.4 branch); older 9.4 jars bundle 8.0 and do not provide these additions.
 
-Build with `mvn clean install`. Depend on `fr.elias:ModeledNPCs-API:8.1` with Maven scope `provided`. Do not shade the API: ModeledNPCS supplies it at runtime. Declare `depend: [ModeledNPCS]` in your plugin.yml. Maven deployment is separate from GitHub source publication.
+Build with `mvn clean install`. Depend on `fr.elias:ModeledNPCs-API:8.1` with Maven scope `provided`. Do not shade the API: ModeledNPCS supplies it at runtime. Declare `depend: [ModeledNPCS]` in your plugin.yml. Use the public Maven repository below:
+
+```xml
+<repositories>
+    <repository>
+        <id>oreostudios-releases</id>
+        <url>https://maven.oreostudios.fr/releases</url>
+    </repository>
+</repositories>
+<dependencies>
+    <dependency>
+        <groupId>fr.elias</groupId>
+        <artifactId>ModeledNPCs-API</artifactId>
+        <version>8.1</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+
+Maintainers deploy with `mvn clean deploy` using a local Maven settings server named `oreostudios-releases`. Credentials must never be committed.
 
 Call API operations on the Bukkit server thread after ModeledNPCS enables:
 
